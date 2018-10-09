@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+	      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+         
+       
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="app.js"></script>
+        
+
+        
+        
+        
+    </head>
+
+    <body>
+
+    <h2 class="center-align"> OSTOSLISTA </h2>
+
+   <div class="container">
+    <div id="app">
+    
+    	<ul class="collection">
+        <ostos v-for="i in list"
+               v-bind:key="i.id"
+               v-bind:item="i"
+        >
+           
+        </ostos>
+        </ul> 
+        <br><br><br>
+
+        <h3 class="left-align">LISÄÄ LISTAAN</h3>
+        <form v-on:submit.prevent="addItem">
+        	<div class="input-field">
+        		<i class="material-icons prefix">create</i>
+		        <label class="active" for="newItem">Lisää ostos</label>
+		        <input
+		          type="text"
+		          v-model="newItemName"
+		          id="newItem"
+		          placeholder="nimi"
+		          class="validate"
+		        >
+		</div>
+		<div class="input-field">
+		        <i class="material-icons prefix">play_arrow</i>
+		        <input
+		          v-model="newItemAmount"
+		          id="newItem"
+		          placeholder="määrä"
+		          type="text"
+		          class="validate"
+		        >
+		</div>
+                <button class="btn waves-effect">Lisää</button>
+        </form>
+
+
+        <br><br><br><br>
+        <h3 class="left-align">POISTA LISTASTA</h3>
+        <p class="flow-text">Monesko tavara poistetaan?</p>
+        <form v-on:submit.prevent="deleteItem">
+        <div class="input-field">
+	    <i class="material-icons prefix">play_arrow</i>
+            <input
+                v-model="deleteId"
+                placeholder="indeksi"
+                type="text"
+                class="validate"
+            >
+            </input>
+        </div>
+            <button class="btn waves-effect">Poista</button>
+
+        </form>       
+        
+    </div>
+   </div>
+
+    </body>
+    
+</html>
